@@ -1,0 +1,18 @@
+<div class="calculator">
+  <div class="inputs">
+    <input type="number" placeholder="Son 1" [ngModel]="son1()" (ngModelChange)="son1.set($event)" />
+    <input type="number" placeholder="Son 2" [ngModel]="son2()" (ngModelChange)="son2.set($event)" />
+  </div>
+
+  <div class="buttons">
+    <button (click)="qoshish()">+</button>
+    <button (click)="ayirish()">−</button>
+    <button (click)="kopaytirish()">*</button>
+    <button (click)="bolish()">/</button>
+  </div>
+
+  <div class="result">
+    <strong>Natija: {{ natija() }}</strong>
+  </div>
+</div>
+
