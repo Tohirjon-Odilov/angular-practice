@@ -73,9 +73,33 @@
       background-color: #c82333;
     }
   }
+
+  .green {
+    background-color: lightgreen;
+    border-radius: 4px;
+    border: 1px solid green;
+    color: white;
+    padding: 5px;
+  }
+
+  .yellow {
+    background-color: darkorange;
+    border-radius: 4px;
+    border: 1px solid darkorange;
+    color: white;
+    padding: 5px;
+  }
+
+  .red{
+    background-color: lightcoral;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: white;
+    padding: 5px;
+  }
 }
 
-.cleat-btn{
+.clear-btn{
   margin-top: 15px;
   padding: 10px 15px;
   background-color: #ffc107;

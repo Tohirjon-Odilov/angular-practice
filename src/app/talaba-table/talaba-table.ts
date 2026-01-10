@@ -1,5 +1,6 @@
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {NgClass} from '@angular/common';
 
 interface Student {
   id: number;
@@ -10,7 +11,7 @@ interface Student {
 @Component({
   selector: 'app-talaba-table',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgClass],
   templateUrl: "talaba-table.html",
   styleUrl: "talaba-table.css"
 })
@@ -19,7 +20,7 @@ export class TalabaTableComponent {
   students: Student[] = [];
   message = signal<string | null>(null);
   currentName: string | null = null;
-  currentPoint: number | null = null;
+  currentPoint: number = 0;
   timeoutId: any = null;
 
   addStudent() {

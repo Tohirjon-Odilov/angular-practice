@@ -16,25 +16,32 @@
     </thead>
 
     <tbody>
-      @if (students.length > 0) {
-        @for (student of students; track student.id; let i = $index) {
-          <tr>
-            <td>{{ i + 1 }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.point }}</td>
-            <td>
-              <button class="delete-btn" (click)="removeStudent(student)">O'chirish</button>
-            </td>
-          </tr>
-        }
-      } @else {
+      @for (student of students; track student.id; let i = $index) {
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ student.name }}</td>
+          <td>
+              <span [ngClass]="{
+              'green': student.point >= 90,
+              'yellow': student.point >= 60 && 89 >= student.point,
+              'red': student.point < 60
+              }">
+                {{ student.point }}
+              </span>
+          </td>
+          <td>
+            <button class="delete-btn" (click)="removeStudent(student)">O'chirish</button>
+          </td>
+        </tr>
+      } @empty {
         <tr>
           <td colspan="4">Talabalar ro'yhati bo'sh</td>
         </tr>
+
       }
     </tbody>
   </table>
-  <button class="cleat-btn" (click)="clearStudents()">Tozalash</button>
+  <button class="clear-btn" (click)="clearStudents()">Tozalash</button>
 
   @if (message() != null) {
     <div class="messageBox">
