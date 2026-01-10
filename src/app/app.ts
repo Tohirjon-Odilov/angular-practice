@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {TalabaTableComponent} from './talaba-table/talaba-table';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TalabaTableComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
