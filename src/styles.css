@@ -1,14 +1,19 @@
 @import "tailwindcss";
 
-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-}
-
-*{
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f7;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 }
