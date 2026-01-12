@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {TalabaTableComponent} from './talaba-table/talaba-table';
-import {CalculatorComponent} from './calculator/calculator.component';
-import {IncreaseComponent} from './increase/increase.component';
+import {TalabaTableComponent} from './2-lesson/talaba-table/talaba-table';
+import {CalculatorComponent} from './1-lesson/calculator/calculator.component';
+import {IncreaseComponent} from './1-lesson/increase/increase.component';
 
 @Component({
   selector: 'app-root',
