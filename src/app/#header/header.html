@@ -1,0 +1,8 @@
+<ul class="flex justify-center align-center gap-2">
+  @for (lesson of lessons; track $index) {
+    <li class="bg-blue-900 text-white block p-2 rounded-lg">
+      <a [routerLink]="lesson.path">{{lesson.title}}</a>
+      <p class="text-[10px]">{{ lesson.description }}</p>
+    </li>
+  }
+</ul>
