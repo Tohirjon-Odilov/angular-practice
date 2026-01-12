@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="input-group">
+    <input type="number" placeholder="Son 1" [(ngModel)]="num1">
+    <input type="number" placeholder="Son 2" [(ngModel)]="num2">
+  </div>
+
+  <button (click)="qushish()">+</button>
+  <button (click)="ayirish()">-</button>
+  <button (click)="kupaytirish()">*</button>
+  <button (click)="bulish()">/</button>
+  <button (click)="clear()">Tozalash</button>
+
+  <hr>
+
+  <p [class.error]="errorMessage != null">Natija:
+    @if (result !== null) {
+      <b [ngClass]="{
+      'success': result > 0,
+      'error': result < 0
+      }">{{ result }}</b>
+    } @else {
+      Amal yo'q
+    }
+  </p>
+
+  <div class="error">
+    {{errorMessage}}
+  </div>
+</div>
