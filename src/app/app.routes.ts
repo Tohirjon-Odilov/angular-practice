@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -16,5 +16,13 @@ export const routes: Routes = [
   {
     path: "student-table",
     loadComponent: () => import('./2-lesson/talaba-table/talaba-table').then(c => c.TalabaTableComponent)
+  },
+  {
+    path: "crm-system",
+    loadComponent: () => import('./3-lesson/crm-system/crm-system').then(c => c.CrmSystem)
+  },
+  {
+    path: "add-remove-student",
+    loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm)
   }
 ];

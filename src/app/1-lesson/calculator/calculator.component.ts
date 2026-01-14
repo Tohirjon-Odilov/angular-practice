@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {JsonPipe, NgClass} from '@angular/common';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-calculator',
@@ -8,7 +8,6 @@ import {JsonPipe, NgClass} from '@angular/common';
   styleUrl: 'calculator.component.css',
   imports: [
     FormsModule,
-    JsonPipe,
     NgClass
   ]
 })

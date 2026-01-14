@@ -1,0 +1,17 @@
+.search {
+  margin-bottom: 15px;
+  width: 300px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+table {
+  border-collapse: collapse;
+
+  tr, th, td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+}

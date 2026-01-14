@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StudentList} from './components/student-list/student-list';
 
 @Component({
   selector: 'app-crm-system',
-  imports: [],
+  imports: [
+    StudentList
+  ],
   templateUrl: './crm-system.html',
   styleUrl: './crm-system.css',
 })

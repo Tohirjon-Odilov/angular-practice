@@ -1,8 +1,147 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+
+export interface Student {
+  id: number;
+  name: string;
+  email: string;
+  subject: string;
+  point: number;
+  grade: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class StudentService {
-  
+  students: Student[] = [
+    {
+      id: 1,
+      name: "Javohir Abdullayev",
+      email: "javohir.a@example.com",
+      subject: "Computer Science",
+      point: 88,
+      grade: "B"
+    },
+    {
+      id: 2,
+      name: "Malika Karimova",
+      email: "malika.k@example.com",
+      subject: "Mathematics",
+      point: 95,
+      grade: "A"
+    },
+    {
+      id: 3,
+      name: "Sardor Rahimov",
+      email: "sardor.r@example.com",
+      subject: "Physics",
+      point: 76,
+      grade: "C"
+    },
+    {
+      id: 4,
+      name: "Dildora Usmonova",
+      email: "dildora.u@example.com",
+      subject: "English Literature",
+      point: 92,
+      grade: "A"
+    },
+    {
+      id: 5,
+      name: "Bekzod Tursunov",
+      email: "bekzod.t@example.com",
+      subject: "History",
+      point: 85,
+      grade: "B"
+    },
+    {
+      id: 6,
+      name: "Aziza Saidova",
+      email: "aziza.s@example.com",
+      subject: "Biology",
+      point: 79,
+      grade: "C"
+    },
+    {
+      id: 7,
+      name: "Otabek Mirzayev",
+      email: "otabek.m@example.com",
+      subject: "Chemistry",
+      point: 68,
+      grade: "D"
+    },
+    {
+      id: 8,
+      name: "Nigora Aliyeva",
+      email: "nigora.a@example.com",
+      subject: "Computer Science",
+      point: 91,
+      grade: "A"
+    },
+    {
+      id: 9,
+      name: "Sherzod Qodirov",
+      email: "sherzod.q@example.com",
+      subject: "Economics",
+      point: 74,
+      grade: "C"
+    },
+    {
+      id: 10,
+      name: "Gulnoza Ahmedova",
+      email: "gulnoza.a@example.com",
+      subject: "Psychology",
+      point: 89,
+      grade: "B"
+    }
+  ];
+
+  add(student: Student): void {
+    this.students.push(student);
+  }
+
+  update(student: Student): void {
+    this.students = this.students.filter(s => s.id !== student.id);
+    this.students.push(student);
+  }
+
+  delete(studentId: number): void {
+    this.students = this.students.filter(s => s.id !== studentId);
+  }
+
+  getAll(): Student[] {
+    return this.students;
+  }
+
+  getById(studentId: number): Student | undefined {
+    return this.students.find(s => s.id === studentId);
+  }
+
+  getStudentsBySubject(subject: string): Student[] {
+    return this.students.filter(s => s.subject === subject);
+  }
+
+  getStudentByGrade(grade: string): Student[] {
+    return this.students.filter(s => s.grade === grade);
+  }
+
+  getAverageScore(): number{
+    if(this.students.length > 0) return 0;
+    const total = this.students.reduce((sum, s)=>
+      sum + s.point, 0)
+
+    return total / this.students.length;
+  }
+
+  getTopStudent(): Student | undefined {
+    if(this.students.length === 0) return undefined;
+    return this.students.reduce((top, current) =>
+      current.point > top.point ? current : top
+    )
+  }
+
+  getStudent(studentName: string): Student[] | undefined {
+    return this.students.filter(s => s.name === studentName);
+  }
 }

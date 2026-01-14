@@ -31,6 +31,11 @@ export class Header {
       title: "2-lesson",
       description: "Student Table",
       path: "student-table"
+    },
+    {
+      title: "3-lesson",
+      description: "Crm System",
+      path: "crm-system"
     }
   ]
 }

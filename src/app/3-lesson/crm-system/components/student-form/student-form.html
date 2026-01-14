@@ -1,1 +1,23 @@
-<p>student-form works!</p>
+<div class="container">
+  <button [routerLink]="'/crm-system'">Ortga</button>
+
+  <form action="#">
+    <input type="text" [(ngModel)]="studentName" placeholder="Ism kiriting...">
+    <input type="text" [(ngModel)]="studentSubject" placeholder="Fan kiriting...">
+    <input type="number" [(ngModel)]="studentPoint" placeholder="Bal kiriting...">
+    <input type="text" [(ngModel)]="studentGrade" placeholder="Baho kiriting...">
+    <input type="email" [(ngModel)]="studentEmail" placeholder="Email kiriting...">
+
+    <button class="mt-3 bg-green-600 p-2 text-white rounded-md" (click)="addOrEditStudent()">
+      @if (student === null || student === undefined) {
+        <p>
+          Qo'shish
+        </p>
+      } @else {
+        <p>
+          Tahrirlash
+        </p>
+      }
+    </button>
+  </form>
+</div>
