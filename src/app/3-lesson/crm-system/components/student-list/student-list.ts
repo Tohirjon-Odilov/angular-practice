@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {Student, StudentService} from '../../services/student-service';
 import {StudentCard} from '../student-card/student-card';
 import {RouterLink} from '@angular/router';
@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 })
 export class StudentList implements OnInit {
   private studentService = inject(StudentService);
+  @ViewChildren(StudentCard) cards!: QueryList<StudentCard>;
 
   students: Student[] = [];
   selectedSubject: string = '';
@@ -56,6 +57,15 @@ export class StudentList implements OnInit {
   resetFilter() {
     this.selectedSubject = '';
     this.selectedGrade = '';
+    this.students = this.studentService.students;
+  }
+
+  protected toggleStudentCard(id: number) {
+    this.cards.get(id)?.toggleCard()
+  }
+
+  protected handleDeleteStudent($event: number) {
+    this.studentService.delete($event);
     this.students = this.studentService.students;
   }
 }

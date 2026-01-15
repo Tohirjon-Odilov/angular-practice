@@ -45,7 +45,14 @@
           <td>{{ id + 1 }}</td>
           <td>{{ student.name }}</td>
           <td>
-            <app-student-card [student]="student"/>
+            <button (click)="toggleStudentCard(id)" class="bg-blue-400 text-white p-1 rounded-md">
+              Expand
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <app-student-card (deleteStudent)="handleDeleteStudent($event)" [student]="student"/>
           </td>
         </tr>
       } @empty {
