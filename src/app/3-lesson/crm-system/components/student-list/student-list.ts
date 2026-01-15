@@ -2,12 +2,14 @@ import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/c
 import {Student, StudentService} from '../../services/student-service';
 import {StudentCard} from '../student-card/student-card';
 import {RouterLink} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-student-list',
   imports: [
     StudentCard,
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   templateUrl: './student-list.html',
   styleUrl: './student-list.css',
@@ -18,6 +20,7 @@ export class StudentList implements OnInit {
   students: Student[] = [];
   selectedSubject: string = '';
   selectedGrade: string = '';
+  protected currentStudentName: string = '';
 
   ngOnInit(): void {
     this.students = this.studentService.students;
@@ -43,8 +46,11 @@ export class StudentList implements OnInit {
   }
 
   searchStudentByName(studentName: string) {
-    return this.students.filter(s =>
-      s.name.toLowerCase().includes(studentName.toLowerCase()));
+    if(studentName) this.students = [...this.students.filter(s =>
+      s.name.toLowerCase().includes(studentName.toLowerCase()))]
+    else{
+      this.students = [...this.studentService.students];
+    }
   }
 
   resetFilter() {

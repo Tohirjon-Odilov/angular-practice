@@ -1,15 +1,34 @@
-<div class="container">
-  <button [routerLink]="'/crm-system'">Ortga</button>
+<div class="container border border-gray-300 rounded-md p-5 w-xl">
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl">
+      @if (!student) {
+        <p>
+          Yangi talaba ma'lumotlarini qo'shing
+        </p>
+      } @else {
+        <p>
+          Talaba ma'lumotlarini yangilash
+        </p>
+      }
+    </h2>
+    <button [routerLink]="'/crm-system'" class="ml-2 bg-blue-400 cursor-pointer p-2 text-white rounded-md">Ortga
+    </button>
+  </div>
 
   <form action="#">
-    <input type="text" [(ngModel)]="studentName" placeholder="Ism kiriting...">
-    <input type="text" [(ngModel)]="studentSubject" placeholder="Fan kiriting...">
-    <input type="number" [(ngModel)]="studentPoint" placeholder="Bal kiriting...">
-    <input type="text" [(ngModel)]="studentGrade" placeholder="Baho kiriting...">
-    <input type="email" [(ngModel)]="studentEmail" placeholder="Email kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentName" name="studentName"
+           placeholder="Ism kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentSubject"
+           name="studentSubject" placeholder="Fan kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="number" [(ngModel)]="studentPoint" name="studentPoint"
+           placeholder="Bal kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentGrade" name="studentGrade"
+           placeholder="Baho kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="email" [(ngModel)]="studentEmail" name="studentEmail"
+           placeholder="Email kiriting...">
 
-    <button class="mt-3 bg-green-600 p-2 text-white rounded-md" (click)="addOrEditStudent()">
-      @if (student === null || student === undefined) {
+    <button class="mt-3 bg-green-600 p-2 cursor-pointer text-white rounded-md" (click)="addOrEditStudent()">
+      @if (!student) {
         <p>
           Qo'shish
         </p>

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="action-wrapper w-56 mb-5">
-    <input type="search" class="search rounded-md outline-0 select-auto" placeholder="Qidiruv...">
+    <input type="search" class="search rounded-md outline-0 select-auto" [(ngModel)]="currentStudentName"
+           (input)="searchStudentByName(currentStudentName)" placeholder="Qidiruv...">
 
     <select [value]="selectedGrade" (change)="filterStudentByGrade($event)"
             class="mb-3 rounded-md border h-9.25 pe-1 border-gray-300 outline-0 select-auto" name="getStudentByGrade"
