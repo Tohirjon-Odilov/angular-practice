@@ -24,7 +24,7 @@ export class StudentList implements OnInit {
   protected currentStudentName: string = '';
 
   ngOnInit(): void {
-    this.students = this.studentService.students;
+    this.students = this.studentService.getAll();
   }
 
   get uniqueSubjects(): string[] {
@@ -57,7 +57,7 @@ export class StudentList implements OnInit {
   resetFilter() {
     this.selectedSubject = '';
     this.selectedGrade = '';
-    this.students = this.studentService.students;
+    this.students = this.studentService.getAll();
   }
 
   protected toggleStudentCard(id: number) {
@@ -66,6 +66,6 @@ export class StudentList implements OnInit {
 
   protected handleDeleteStudent($event: number) {
     this.studentService.delete($event);
-    this.students = this.studentService.students;
+    this.students = this.studentService.getAll();
   }
 }

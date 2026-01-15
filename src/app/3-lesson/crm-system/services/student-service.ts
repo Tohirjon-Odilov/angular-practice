@@ -6,7 +6,7 @@ export interface Student {
   email: string;
   subject: string;
   point: number;
-  grade: string;
+  grade: "A" | "B" | "C" | "D";
 }
 
 @Injectable({
@@ -102,8 +102,10 @@ export class StudentService {
   }
 
   update(student: Student): void {
-    this.students = this.students.filter(s => s.id !== student.id);
-    this.students.push(student);
+    const studentId = this.students.findIndex(s => s.id === student.id);
+    if (studentId !== -1) {
+      this.students[studentId] = (student);
+    }
   }
 
   delete(studentId: number): void {
@@ -126,16 +128,16 @@ export class StudentService {
     return this.students.filter(s => s.grade === grade);
   }
 
-  getAverageScore(): number{
-    if(this.students.length > 0) return 0;
-    const total = this.students.reduce((sum, s)=>
+  getAverageScore(): number {
+    if (this.students.length > 0) return 0;
+    const total = this.students.reduce((sum, s) =>
       sum + s.point, 0)
 
     return total / this.students.length;
   }
 
   getTopStudent(): Student | undefined {
-    if(this.students.length === 0) return undefined;
+    if (this.students.length === 0) return undefined;
     return this.students.reduce((top, current) =>
       current.point > top.point ? current : top
     )

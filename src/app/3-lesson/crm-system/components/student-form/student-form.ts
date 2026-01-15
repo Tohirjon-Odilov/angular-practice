@@ -22,7 +22,7 @@ export class StudentForm implements OnInit {
   protected studentName: string = "";
   protected studentSubject: string = "";
   protected studentPoint!: number;
-  protected studentGrade: string = "";
+  protected studentGrade!: "A" | "B" | "C" | "D";
   protected studentEmail: string = "";
 
   @Input() student: Student | undefined;
@@ -57,7 +57,7 @@ export class StudentForm implements OnInit {
         point: this.studentPoint
       }
 
-      this.studentService.students.push(this.currentStudent);
+      this.studentService.add(this.currentStudent);
       this.reset()
     } else {
       this.currentStudent = {
@@ -69,15 +69,7 @@ export class StudentForm implements OnInit {
         point: this.studentPoint
       }
 
-      this.studentService.students.map((s: Student) => {
-        if(s.id === this.currentStudent.id) {
-          s.grade = this.studentGrade;
-          s.name = this.studentName;
-          s.point = this.studentPoint;
-          s.email = this.studentEmail;
-          s.subject = this.studentSubject;
-        }
-      });
+      this.studentService.update(this.currentStudent);
       this.reset()
     }
   }

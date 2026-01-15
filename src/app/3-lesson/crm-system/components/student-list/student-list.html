@@ -1,7 +1,13 @@
 <div class="container">
-  <div class="action-wrapper w-56 mb-5">
-    <input type="search" class="search rounded-md outline-0 select-auto" [(ngModel)]="currentStudentName"
-           (input)="searchStudentByName(currentStudentName)" placeholder="Qidiruv...">
+  <div class="action-wrapper w-100 mb-5">
+    <div class="flex align-center gap-2 mb-3 justify-between">
+      <input type="search" class="search rounded-md outline-0 select-auto" [(ngModel)]="currentStudentName"
+             (input)="searchStudentByName(currentStudentName)" placeholder="Qidiruv...">
+
+      <button class="cursor-pointer bg-red-600 p-2 h-9.25 text-white rounded-md" (click)="resetFilter()">
+        Tozalash
+      </button>
+    </div>
 
     <select [value]="selectedGrade" (change)="filterStudentByGrade($event)"
             class="mb-3 rounded-md border h-9.25 pe-1 border-gray-300 outline-0 select-auto" name="getStudentByGrade"
@@ -21,10 +27,6 @@
         <option [value]="uniqueSubject">{{ uniqueSubject }}</option>
       }
     </select>
-
-    <button class="cursor-pointer mt-3 bg-red-600 p-2 text-white rounded-md" (click)="resetFilter()">
-      Tozalash
-    </button>
 
     <button class="cursor-pointer mt-3 bg-green-600 p-2 text-white rounded-md" [routerLink]="'/add-edit-student'">
       +
