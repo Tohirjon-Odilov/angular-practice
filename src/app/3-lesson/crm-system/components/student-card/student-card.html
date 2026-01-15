@@ -1,1 +1,20 @@
-<p>student-card works!</p>
+  <div class="flex gap-2 student-card border border-gray-300 rounded-md p-5 mb-4">
+    <p><strong>Fan:</strong> {{ student.subject }}</p>
+    <p><strong>Bal:</strong> {{ student.point }}</p>
+    <p><strong>Baho:</strong> {{ student.grade }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <div class="mt-4 flex gap-2">
+      <button
+        class="bg-yellow-400 text-white p-1 rounded-md mr-2"
+        (click)="editStudent(student)"
+      >
+        Tahrirlash
+      </button>
+      <button
+        class="bg-red-600 text-white p-1 rounded-md"
+        (click)="deleteStudent(student.id)"
+      >
+        O'chirish
+      </button>
+    </div>
+  </div>

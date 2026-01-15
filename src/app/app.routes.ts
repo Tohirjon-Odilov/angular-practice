@@ -22,7 +22,11 @@ export const routes: Routes = [
     loadComponent: () => import('./3-lesson/crm-system/crm-system').then(c => c.CrmSystem)
   },
   {
-    path: "add-remove-student",
+    path: "add-edit-student",
+    loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm)
+  },
+  {
+    path: "add-edit-student/:studentId",
     loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm)
   }
 ];

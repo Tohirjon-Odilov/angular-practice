@@ -16,15 +16,20 @@
   </div>
 
   <form action="#">
-    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentName" name="studentName"
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="text" [(ngModel)]="studentName" name="studentName"
            placeholder="Ism kiriting...">
-    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentSubject"
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="text" [(ngModel)]="studentSubject"
            name="studentSubject" placeholder="Fan kiriting...">
-    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="number" [(ngModel)]="studentPoint" name="studentPoint"
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="number" [(ngModel)]="studentPoint" name="studentPoint"
            placeholder="Bal kiriting...">
-    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="text" [(ngModel)]="studentGrade" name="studentGrade"
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="text" [(ngModel)]="studentGrade" name="studentGrade"
            placeholder="Baho kiriting...">
-    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5" type="email" [(ngModel)]="studentEmail" name="studentEmail"
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="email" [(ngModel)]="studentEmail" name="studentEmail"
            placeholder="Email kiriting...">
 
     <button class="mt-3 bg-green-600 p-2 cursor-pointer text-white rounded-md" (click)="addOrEditStudent()">
