@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
-import {Student, StudentService} from '../../services/student-service';
+import {IStudent, StudentService} from '../../services/student-service';
 import {StudentCard} from '../student-card/student-card';
 import {RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -18,7 +18,7 @@ export class StudentList implements OnInit {
   private studentService = inject(StudentService);
   @ViewChildren(StudentCard) cards!: QueryList<StudentCard>;
 
-  students: Student[] = [];
+  students: IStudent[] = [];
   selectedSubject: string = '';
   selectedGrade: string = '';
   protected currentStudentName: string = '';

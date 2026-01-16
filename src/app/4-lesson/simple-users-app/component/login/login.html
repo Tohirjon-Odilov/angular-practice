@@ -1,0 +1,21 @@
+<div class="container border border-gray-300 rounded-md p-5 w-xl">
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl">
+      Kirish
+    </h2>
+  </div>
+
+  <form action="#">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="text" [(ngModel)]="username" name="username"
+           placeholder="Foydalanuvchi nomi kiriting...">
+    <input class="outline-0 focus:outline-1 focus:outline-green-400 border border-gray-400 rounded m-2 p-1.5"
+           type="password" [(ngModel)]="password"
+           name="password" placeholder="Parol kiriting...">
+
+    <button class="mt-3 bg-green-600 p-2 cursor-pointer text-white rounded-md" (click)="login()">
+      Kirish
+    </button>
+  </form>
+
+</div>

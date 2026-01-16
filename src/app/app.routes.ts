@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import {authGuard} from './4-lesson/simple-users-app/component/login/auth-guard';
 
 export const routes: Routes = [
   {
@@ -28,5 +29,14 @@ export const routes: Routes = [
   {
     path: "add-edit-student/:studentId",
     loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm)
-  }
+  },
+  {
+    path: "simple-users-app",
+    loadChildren: () => import('./4-lesson/simple-users-app/simple-users-app.routes').then(c => c.routes),
+    canActivate: [authGuard]
+  },
+  {
+    path: "login",
+    loadComponent: () => import("./4-lesson/simple-users-app/component/login/login").then(m => m.Login),
+  },
 ];

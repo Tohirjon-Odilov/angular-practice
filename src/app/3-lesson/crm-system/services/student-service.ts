@@ -1,12 +1,33 @@
 import {Injectable} from '@angular/core';
 
-export interface Student {
+export interface IStudent {
   id: number;
   name: string;
   email: string;
   subject: string;
   point: number;
   grade: "A" | "B" | "C" | "D";
+  role?: "student" | "admin";
+}
+
+export class Student implements IStudent {
+    id: number;
+    name: string;
+    email: string;
+    subject: string;
+    point: number;
+    grade: "A" | "B" | "C" | "D";
+    role?: "student" | "admin";
+
+    constructor(id: number, name: string, email: string, subject: string, point: number) {
+      this.id = id;
+      this.name = name;
+      this.email = email;
+      this.subject = subject;
+      this.point = point;
+      this.grade = "A";
+      this.role = "student";
+    }
 }
 
 @Injectable({
@@ -14,7 +35,7 @@ export interface Student {
 })
 
 export class StudentService {
-  students: Student[] = [
+  students: IStudent[] = [
     {
       id: 1,
       name: "Javohir Abdullayev",
@@ -97,11 +118,11 @@ export class StudentService {
     }
   ];
 
-  add(student: Student): void {
+  add(student: IStudent): void {
     this.students.push(student);
   }
 
-  update(student: Student): void {
+  update(student: IStudent): void {
     const studentId = this.students.findIndex(s => s.id === student.id);
     if (studentId !== -1) {
       this.students[studentId] = (student);
@@ -112,19 +133,19 @@ export class StudentService {
     this.students = this.students.filter(s => s.id !== studentId);
   }
 
-  getAll(): Student[] {
+  getAll(): IStudent[] {
     return this.students;
   }
 
-  getById(studentId: number): Student | undefined {
+  getById(studentId: number): IStudent | undefined {
     return this.students.find(s => s.id === studentId);
   }
 
-  getStudentsBySubject(subject: string): Student[] {
+  getStudentsBySubject(subject: string): IStudent[] {
     return this.students.filter(s => s.subject === subject);
   }
 
-  getStudentByGrade(grade: string): Student[] {
+  getStudentByGrade(grade: string): IStudent[] {
     return this.students.filter(s => s.grade === grade);
   }
 
@@ -136,14 +157,14 @@ export class StudentService {
     return total / this.students.length;
   }
 
-  getTopStudent(): Student | undefined {
+  getTopStudent(): IStudent | undefined {
     if (this.students.length === 0) return undefined;
     return this.students.reduce((top, current) =>
       current.point > top.point ? current : top
     )
   }
 
-  getStudent(studentName: string): Student[] | undefined {
+  getStudent(studentName: string): IStudent[] | undefined {
     return this.students.filter(s => s.name === studentName);
   }
 }

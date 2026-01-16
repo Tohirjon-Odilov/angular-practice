@@ -1,6 +1,6 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Student, StudentService} from '../../services/student-service';
+import {IStudent, StudentService} from '../../services/student-service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -25,8 +25,8 @@ export class StudentForm implements OnInit {
   protected studentGrade!: "A" | "B" | "C" | "D";
   protected studentEmail: string = "";
 
-  @Input() student: Student | undefined;
-  currentStudent!: Student;
+  @Input() student: IStudent | undefined;
+  currentStudent!: IStudent;
 
   ngOnInit(): void {
     const studentIdParam = this.route.snapshot.paramMap.get('studentId');

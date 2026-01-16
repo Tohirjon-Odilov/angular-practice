@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {Student, StudentService} from '../../services/student-service';
+import {IStudent, StudentService} from '../../services/student-service';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -14,12 +14,12 @@ export class StudentCard {
   private router = inject(Router)
 
   @Input({required: true})
-  student!: Student
+  student!: IStudent
 
   toggle: boolean = false;
   @Output() deleteStudent = new EventEmitter<number>();
 
-  protected editStudent(student: Student) {
+  protected editStudent(student: IStudent) {
     this.router.navigate(['add-edit-student', student.id]);
   }
 
