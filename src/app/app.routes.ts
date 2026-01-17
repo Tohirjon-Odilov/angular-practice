@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router';
 import {authGuard} from './4-lesson/simple-users-app/component/login/auth-guard';
+import {leaveGuard} from './4-lesson/simple-users-app/component/login/leave-guard';
 
 export const routes: Routes = [
   {
@@ -28,7 +29,8 @@ export const routes: Routes = [
   },
   {
     path: "add-edit-student/:studentId",
-    loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm)
+    loadComponent: () => import('./3-lesson/crm-system/components/student-form/student-form').then(c => c.StudentForm),
+    canDeactivate: [leaveGuard]
   },
   {
     path: "simple-users-app",

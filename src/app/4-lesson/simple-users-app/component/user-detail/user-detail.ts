@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Student, StudentService} from '../../../../3-lesson/crm-system/services/student-service';
 import {ActivatedRoute} from '@angular/router';
+import {CanComponentDeactivate} from '../login/leave-guard';
 
 @Component({
   selector: 'app-user-detail',
@@ -8,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './user-detail.html',
   styleUrl: './user-detail.css',
 })
-export class UserDetail implements OnInit {
+export class UserDetail implements OnInit, CanComponentDeactivate {
   private studentService = inject(StudentService);
   private route = inject(ActivatedRoute);
 
@@ -19,5 +20,9 @@ export class UserDetail implements OnInit {
       this.user = this.studentService.getById(Number(params.get("id")))
       console.log(this.user);
     })
+  }
+
+  canDeactivate() {
+    return confirm("Sahifadan chiqmoqchimisiz?")
   }
 }
