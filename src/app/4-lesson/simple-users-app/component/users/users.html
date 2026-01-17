@@ -4,13 +4,18 @@
   </button>
   <ul class="list-group border border-gray-400 p-3 rounded-md">
     @for (user of users; track user.id; let i = $index) {
-      @if (isAdmin && user.role === 'admin') {
-        <li class="p-2 my-2 bg-green-200 rounded-md">
-          <h5 class="user-name">{{i+1}}. {{ user.name }} (Admin)</h5>
-        </li>
-      } @else{
-        <li class="p-2 my-2 cursor-pointer outline-0 hover:bg-gray-200 rounded-md" [routerLink]="[user.id]">
-          <h5 class="user-name">{{i+1}}. {{ user.name }}</h5>
+      @if (isAdmin || user.role !== 'admin') {
+        <li
+          [routerLink]="[user.id]"
+          class="flex p-2 m-2 gap-2 hover:bg-gray-300 rounded-xl cursor-pointer"
+          [class.bg-green-300]="user.role === 'admin'">
+          <b>{{ i }}.         </b>
+          <p>
+            {{ user.name }}
+            @if (user.role === 'admin') {
+              (admin)
+            }
+          </p>
         </li>
       }
     }
