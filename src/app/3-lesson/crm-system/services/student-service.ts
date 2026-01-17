@@ -35,14 +35,24 @@ export class Student implements IStudent {
 })
 
 export class StudentService {
-  students: IStudent[] = [
+  students: Student[] = [
+    {
+      id: 99,
+      name: "Tohirjon Odilov",
+      email: "javohir.a@example.com",
+      subject: "Computer Science",
+      point: 100,
+      grade: "A",
+      role: "admin"
+    },
     {
       id: 1,
       name: "Javohir Abdullayev",
       email: "javohir.a@example.com",
       subject: "Computer Science",
       point: 88,
-      grade: "B"
+      grade: "B",
+      role: "student"
     },
     {
       id: 2,
@@ -50,7 +60,8 @@ export class StudentService {
       email: "malika.k@example.com",
       subject: "Mathematics",
       point: 95,
-      grade: "A"
+      grade: "A",
+      role: "student"
     },
     {
       id: 3,
@@ -58,7 +69,8 @@ export class StudentService {
       email: "sardor.r@example.com",
       subject: "Physics",
       point: 76,
-      grade: "C"
+      grade: "C",
+      role: "student"
     },
     {
       id: 4,
@@ -66,7 +78,8 @@ export class StudentService {
       email: "dildora.u@example.com",
       subject: "English Literature",
       point: 92,
-      grade: "A"
+      grade: "A",
+      role: "student"
     },
     {
       id: 5,
@@ -74,7 +87,8 @@ export class StudentService {
       email: "bekzod.t@example.com",
       subject: "History",
       point: 85,
-      grade: "B"
+      grade: "B",
+      role: "student"
     },
     {
       id: 6,
@@ -82,7 +96,8 @@ export class StudentService {
       email: "aziza.s@example.com",
       subject: "Biology",
       point: 79,
-      grade: "C"
+      grade: "C",
+      role: "student"
     },
     {
       id: 7,
@@ -90,7 +105,8 @@ export class StudentService {
       email: "otabek.m@example.com",
       subject: "Chemistry",
       point: 68,
-      grade: "D"
+      grade: "D",
+      role: "student"
     },
     {
       id: 8,
@@ -98,7 +114,8 @@ export class StudentService {
       email: "nigora.a@example.com",
       subject: "Computer Science",
       point: 91,
-      grade: "A"
+      grade: "A",
+      role: "student"
     },
     {
       id: 9,
@@ -106,7 +123,8 @@ export class StudentService {
       email: "sherzod.q@example.com",
       subject: "Economics",
       point: 74,
-      grade: "C"
+      grade: "C",
+      role: "student"
     },
     {
       id: 10,
@@ -114,15 +132,16 @@ export class StudentService {
       email: "gulnoza.a@example.com",
       subject: "Psychology",
       point: 89,
-      grade: "B"
+      grade: "B",
+      role: "student"
     }
   ];
 
-  add(student: IStudent): void {
+  add(student: Student): void {
     this.students.push(student);
   }
 
-  update(student: IStudent): void {
+  update(student: Student): void {
     const studentId = this.students.findIndex(s => s.id === student.id);
     if (studentId !== -1) {
       this.students[studentId] = (student);
@@ -133,19 +152,23 @@ export class StudentService {
     this.students = this.students.filter(s => s.id !== studentId);
   }
 
-  getAll(): IStudent[] {
+  getAll(): Student[] {
     return this.students;
   }
 
-  getById(studentId: number): IStudent | undefined {
-    return this.students.find(s => s.id === studentId);
+  getById(studentId: number): Student {
+    return this.students.find(s => s.id === studentId)!;
   }
 
-  getStudentsBySubject(subject: string): IStudent[] {
+  getByName(studentName: string): Student | undefined {
+    return this.students.find(s => s.name.split(" ")[0] === studentName.split(" ")[0]);
+  }
+
+  getStudentsBySubject(subject: string): Student[] {
     return this.students.filter(s => s.subject === subject);
   }
 
-  getStudentByGrade(grade: string): IStudent[] {
+  getStudentByGrade(grade: string): Student[] {
     return this.students.filter(s => s.grade === grade);
   }
 
@@ -157,14 +180,14 @@ export class StudentService {
     return total / this.students.length;
   }
 
-  getTopStudent(): IStudent | undefined {
+  getTopStudent(): Student | undefined {
     if (this.students.length === 0) return undefined;
     return this.students.reduce((top, current) =>
       current.point > top.point ? current : top
     )
   }
 
-  getStudent(studentName: string): IStudent[] | undefined {
+  getStudent(studentName: string): Student[] | undefined {
     return this.students.filter(s => s.name === studentName);
   }
 }

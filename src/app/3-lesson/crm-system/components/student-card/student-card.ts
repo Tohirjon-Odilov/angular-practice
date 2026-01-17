@@ -1,11 +1,10 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {IStudent, StudentService} from '../../services/student-service';
-import {Router, RouterLink} from '@angular/router';
+import {IStudent} from '../../services/student-service';
+import {Router, } from '@angular/router';
 
 @Component({
   selector: 'app-student-card',
   imports: [
-    RouterLink
   ],
   templateUrl: './student-card.html',
   styleUrl: './student-card.css',

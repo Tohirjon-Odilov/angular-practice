@@ -1,1 +1,18 @@
-<p>users works!</p>
+<div class="container">
+  <button class="logout ">
+    <a class="bg-red-600 block mb-2 text-white p-2 rounded-md cursor-pointer" (click)="logout()">Chiqish</a>
+  </button>
+  <ul class="list-group border border-gray-400 p-3 rounded-md">
+    @for (user of users; track user.id; let i = $index) {
+      @if (isAdmin && user.role === 'admin') {
+        <li class="p-2 my-2 bg-green-200 rounded-md">
+          <h5 class="user-name">{{i+1}}. {{ user.name }} (Admin)</h5>
+        </li>
+      } @else{
+        <li class="p-2 my-2 cursor-pointer outline-0 hover:bg-gray-200 rounded-md" [routerLink]="[user.id]">
+          <h5 class="user-name">{{i+1}}. {{ user.name }}</h5>
+        </li>
+      }
+    }
+  </ul>
+</div>

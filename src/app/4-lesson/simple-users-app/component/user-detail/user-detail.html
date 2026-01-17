@@ -1,1 +1,16 @@
-<p>user-detail works!</p>
+<div class="card">
+  <h1>
+    Siz tanlagan foydalanuvchi haqida ma'lumot:
+  </h1>
+  @if (user) {
+    <div class="card-body">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Role:</strong> {{ user.role }}</p>
+    </div>
+  } @else {
+    <div class="card-body">
+      <p>User not found.</p>
+    </div>
+  }
+</div>

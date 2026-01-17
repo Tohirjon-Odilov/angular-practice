@@ -15,25 +15,28 @@ export class Login {
   private router = inject(Router)
   private userService = inject(StudentService)
 
+  student?: Student
+
   protected username!: string;
   protected password!: string;
 
   protected login() {
-    if(!this.username || !this.password) {
+    if (!this.username || !this.password) {
       return;
     }
 
-    const user: Student = {
-      id: Date.now(),
-      email: this.username.toLowerCase() + "@gmail.com",
-      grade: "C",
-      subject: "null",
-      name: this.username,
-      point: 0
-    }
+    this.student = this.userService.getByName(this.username)
+    console.log(this.student)
 
-    this.userService.add(user)
+    if (this.student && this.student.role === 'admin') {
+      this.router.navigate(['/simple-users-app/users'], {
+        queryParams: {
+          role: "admin"
+        }
+      });
+    } else {
+      this.router.navigate(['/simple-users-app']);
+    }
     localStorage.setItem('token', Date.now().toString());
-    this.router.navigate(['/simple-users-app']);
   }
 }
