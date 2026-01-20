@@ -16,8 +16,8 @@ interface Currency {
   styleUrl: './converter.css',
 })
 export class Converter {
-  amount: number = 0;
-  convertedAmount: number = 0;
+  amount!: number;
+  convertedAmount!: number;
 
   currencyAmount: Currency = {
     uzs: 12000,
@@ -41,7 +41,7 @@ export class Converter {
   }
 
   changeAmount(amount: number): void {
-    this.amount = amount;
+    this.amount = amount
     this.convert();
   }
 
