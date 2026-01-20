@@ -7,4 +7,3 @@ export interface CanComponentDeactivate {
 export const leaveGuard: CanDeactivateFn<CanComponentDeactivate> = (component, currentRoute, currentState, nextState) => {
   return component.canDeactivate();
 };
-
