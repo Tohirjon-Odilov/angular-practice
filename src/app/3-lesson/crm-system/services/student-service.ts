@@ -99,24 +99,24 @@ export class StudentService {
       grade: "C",
       role: "student"
     },
-    {
-      id: 7,
-      name: "Otabek Mirzayev",
-      email: "otabek.m@example.com",
-      subject: "Chemistry",
-      point: 68,
-      grade: "D",
-      role: "student"
-    },
-    {
-      id: 8,
-      name: "Nigora Aliyeva",
-      email: "nigora.a@example.com",
-      subject: "Computer Science",
-      point: 91,
-      grade: "A",
-      role: "student"
-    },
+    // {
+    //   id: 7,
+    //   name: "Otabek Mirzayev",
+    //   email: "otabek.m@example.com",
+    //   subject: "Chemistry",
+    //   point: 68,
+    //   grade: "D",
+    //   role: "student"
+    // },
+    // {
+    //   id: 8,
+    //   name: "Nigora Aliyeva",
+    //   email: "nigora.a@example.com",
+    //   subject: "Computer Science",
+    //   point: 91,
+    //   grade: "A",
+    //   role: "student"
+    // },
     {
       id: 9,
       name: "Sherzod Qodirov",
@@ -165,11 +165,11 @@ export class StudentService {
   }
 
   getStudentsBySubject(subject: string): Student[] {
-    return this.students.filter(s => s.subject === subject);
+    return this.getAll().filter(s => s.subject === subject);
   }
 
   getStudentByGrade(grade: string): Student[] {
-    return this.students.filter(s => s.grade === grade);
+    return this.getAll().filter(s => s.grade === grade);
   }
 
   getAverageScore(): number {

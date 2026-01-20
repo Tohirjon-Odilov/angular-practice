@@ -41,6 +41,11 @@ export class Header {
       title: "4-lesson",
       description: "Simple users app",
       path: "simple-users-app"
+    },
+    {
+      title: "Qo'shimcha",
+      description: "Qo'shimcha",
+      path: "additional"
     }
   ]
 }

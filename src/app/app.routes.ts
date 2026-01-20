@@ -38,6 +38,9 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+
+  },
+  {
     path: "login",
     loadComponent: () => import("./4-lesson/simple-users-app/component/login/login").then(m => m.Login),
   },
