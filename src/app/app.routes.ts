@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {authGuard} from './4-lesson/simple-users-app/component/login/auth-guard';
 import {leaveGuard} from './4-lesson/simple-users-app/component/login/leave-guard';
+import {Notfound} from './notfound/notfound';
 
 export const routes: Routes = [
   {
@@ -38,10 +39,15 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-
+    path: "additional",
+    loadComponent: () => import("./additional/converter/converter").then(m => m.Converter),
   },
   {
     path: "login",
     loadComponent: () => import("./4-lesson/simple-users-app/component/login/login").then(m => m.Login),
   },
+  {
+    path: "**",
+    loadComponent: () => import("./notfound/notfound").then(m => m.Notfound),
+  }
 ];

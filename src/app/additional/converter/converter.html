@@ -1,0 +1,21 @@
+<div class="new-container">
+  <h1 class="font-bold text-xl mb-4">Valyuta konverter</h1>
+  <div class="flex gap-4">
+    <div class="form-group">
+      <select name="" id="" (change)="changeCurrency($event)" class="flex gap-3 outline-none border border-gray-300 rounded mb-2 w-full p-1">
+        <option value="uzs">UZS</option>
+        <option value="usd">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+      <input type="number" [(ngModel)]="amount" (ngModelChange)="changeAmount(amount)" class="border border-gray-300 rounded outline-none">
+    </div>
+    <div class="form-group">
+      <select name="" id="" (change)="changeConvertedCurrency($event)"  class="flex gap-3 outline-none border border-gray-300 rounded mb-2 w-full p-1">
+        <option value="uzs">UZS</option>
+        <option selected value="usd">USD</option>
+        <option value="eur">EUR</option>
+      </select>
+      <input type="number" [(ngModel)]="convertedAmount" (ngModelChange)="changeConvertedAmount(convertedAmount)" class="border border-gray-300 rounded outline-none">
+    </div>
+  </div>
+</div>
