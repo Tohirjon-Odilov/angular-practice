@@ -8,4 +8,7 @@ import { Navbar } from "../navbar/navbar";
   styleUrl: './todo-list-advenced.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TodoListAdvenced { }
+
+export class TodoListAdvenced {
+  
+}
