@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-todo-list',
   imports: [],
-  template: `<p>todo-list works!</p>`,
+  templateUrl: './todo-list.html',
   styleUrl: './todo-list.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
