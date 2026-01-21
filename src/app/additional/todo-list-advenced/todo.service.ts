@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ICategory, ITodo } from './todo.models';
-import { BehaviorSubject } from 'rxjs';
+import { ICategory, ITodo, ITodoStats } from './todo.models';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Todo {
+export class TodoService {
   private todosSubject = new BehaviorSubject<ITodo[]>([
     {
       id: 1,
@@ -14,7 +15,7 @@ export class Todo {
       completed: false,
       createdAt: new Date(),
       deadline: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
-      prioritet: 'medium',
+      priority: 'medium',
       status: 'pending',
       category: 'Shopping',
     },
@@ -24,7 +25,7 @@ export class Todo {
       completed: false,
       createdAt: new Date(),
       deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-      prioritet: 'high',
+      priority: 'high',
       status: 'in-progress',
       category: 'Work',
     },
@@ -34,7 +35,7 @@ export class Todo {
       completed: false,
       createdAt: new Date(),
       deadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
-      prioritet: 'low',
+      priority: 'low',
       status: 'pending',
       category: 'Health',
     },
@@ -61,13 +62,20 @@ export class Todo {
     return this.todosSubject.value;
   }
 
-  addTodos(todo: ITodo): void {
+  addTodo(todo: ITodo): void {
     const todos = this.todosSubject.value;
     const newTodo = {
       ...todo,
       id: this.generateId(),
     };
     this.todosSubject.next([...todos, newTodo]);
+  }
+
+  toggleTodo(id: number): void {
+    const todos = this.todosSubject.value.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    this.todosSubject.next(todos);
   }
 
   updateTodo(id: number, updateTodo: ITodo): void {
@@ -84,6 +92,76 @@ export class Todo {
     this.todosSubject.next(filteredTodos);
   }
 
+  getTodosByStatus(status: string): Observable<ITodo[]> {
+    return this.todos$.pipe(
+      map((todos) => todos.filter((todo) => todo.status === status))
+    );
+  }
+
+  getTodosByCategory(category: string): Observable<ITodo[]> {
+    return this.todos$.pipe(
+      map((todos) => todos.filter((todo) => todo.category === category))
+    );
+  }
+
+  getTodosByPriority(priority: 'low' | 'medium' | 'high'): Observable<ITodo[]> {
+    return this.todos$.pipe(
+      map((todos) => todos.filter((todo) => todo.priority === priority))
+    );
+  }
+
+  getTodosSortedByDeadline(order: 'asc' | 'desc' = 'asc'): Observable<ITodo[]> {
+    return this.todos$.pipe(
+      map((todos) => {
+        const sorted = [...todos].sort((a, b) => {
+          return order === 'asc'
+            ? a.deadline.getTime() - b.deadline.getTime()
+            : b.deadline.getTime() - a.deadline.getTime();
+        });
+        return sorted;
+      })
+    );
+  }
+
+  getTodosSortedByPriority(): Observable<ITodo[]> {
+    return this.todos$.pipe(
+      map((todos) => {
+        const priorityOrder = { high: 1, medium: 2, low: 3 };
+        return [...todos].sort(
+          (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
+        );
+      })
+    );
+  }
+
+  getStats(): Observable<ITodoStats> {
+    return this.todos$.pipe(
+      map((todos) => ({
+        total: todos.length,
+        completed: todos.filter((t) => t.completed).length,
+        remaining: todos.filter((t) => !t.completed).length,
+        byCategory: this.countByCategory(todos),
+        byPriority: this.countByPriority(todos),
+      }))
+    );
+  }
+
+  private countByCategory(todos: ITodo[]): Record<string, number> {
+    return todos.reduce((acc, todo) => {
+      const category = todo.category || 'Uncategorized';
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+  }
+
+  private countByPriority(todos: ITodo[]): Record<'low' | 'medium' | 'high', number> {
+    return {
+      low: todos.filter((t) => t.priority === 'low').length,
+      medium: todos.filter((t) => t.priority === 'medium').length,
+      high: todos.filter((t) => t.priority === 'high').length,
+    };
+  }
+
   //================== Category =========================
   getCategories(): ICategory[] {
     return this.categoriesSubject.value;
@@ -93,7 +171,7 @@ export class Todo {
     const categories = this.categoriesSubject.value;
     const newCategory = {
       ...category,
-      id: this.generateId()
+      id: this.generateId(),
     };
     this.categoriesSubject.next([...categories, newCategory]);
   }
@@ -101,8 +179,8 @@ export class Todo {
   updateCategory(id: number, updateCategory: ICategory): void {
     const categories = this.categoriesSubject.value;
     const updatedCategories = categories.map((category) =>
-      category.id === id ? {...updateCategory, id} : category
-    )
+      category.id === id ? { ...updateCategory, id } : category,
+    );
     this.categoriesSubject.next(updatedCategories);
   }
 

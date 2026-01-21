@@ -5,7 +5,7 @@ export interface ITodo {
   completed: boolean;
   createdAt: Date;
   deadline: Date;
-  prioritet: 'low' | 'medium' | 'high';
+  priority: 'low' | 'medium' | 'high';
   status: 'pending' | 'in-progress' | 'completed';
   category?: string;
 }
