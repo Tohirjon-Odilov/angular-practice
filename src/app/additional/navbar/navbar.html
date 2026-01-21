@@ -1,0 +1,9 @@
+<nav class="fixed top-0 w-full left-0">
+  <ul class="flex gap-4 bg-gray-500 p-5 justify-center">
+    @for (navbarItem of navbarItems; track $index) {
+      <li class="text-white hover:-translate-y-1 transition-all">
+        <a [routerLink]="navbarItem.path">{{ navbarItem.title }}</a>
+      </li>
+    }
+  </ul>
+</nav>

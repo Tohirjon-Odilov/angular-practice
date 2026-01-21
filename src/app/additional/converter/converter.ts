@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { Navbar } from "../navbar/navbar";
 
 interface Currency {
   uzs: number;
@@ -10,8 +11,9 @@ interface Currency {
 @Component({
   selector: 'app-converter',
   imports: [
-    FormsModule
-  ],
+    FormsModule,
+    Navbar
+],
   templateUrl: './converter.html',
   styleUrl: './converter.css',
 })

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
 
-interface Lesson{
+export interface Lesson{
   title: string;
   description: string;
   path: string;
@@ -45,7 +45,7 @@ export class Header {
     {
       title: "Qo'shimcha",
       description: "Qo'shimcha",
-      path: "additional"
+      path: "valyuta"
     }
   ]
 }
