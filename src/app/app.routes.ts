@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './4-lesson/simple-users-app/component/login/auth-guard';
 import { leaveGuard } from './4-lesson/simple-users-app/component/login/leave-guard';
-import { Notfound } from './notfound/notfound';
 
 export const routes: Routes = [
   {
