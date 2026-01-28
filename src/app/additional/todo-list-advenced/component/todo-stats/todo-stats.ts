@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-todo-stats',
   imports: [],
-  template: `<p>todo-stats works!</p>`,
+  templateUrl: './todo-stats.html',
   styleUrl: './todo-stats.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

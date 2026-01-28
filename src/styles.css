@@ -10,6 +10,7 @@ body{
   align-items: center;
   justify-content: center;
   height: 90vh;
+  overflow: auto;
 }
 
 .new-container{

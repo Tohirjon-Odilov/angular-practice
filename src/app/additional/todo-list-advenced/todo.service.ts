@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { ICategory, ITodo, ITodoStats } from './todo.models';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {ICategory, ITodo, ITodoStats} from './todo.models';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -39,19 +39,128 @@ export class TodoService {
       status: 'pending',
       category: 'Health',
     },
+    {
+      id: 4,
+      title: 'Weekly team sync',
+      description: 'Discuss Q1 goals and roadmap',
+      completed: true,
+      createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+      deadline: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+      priority: 'high',
+      status: 'completed',
+      category: 'Work',
+    },
+    {
+      id: 5,
+      title: 'Car wash',
+      description: 'Full interior and exterior cleaning',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+      priority: 'low',
+      status: 'pending',
+      category: 'Personal',
+    },
+    {
+      id: 6,
+      title: 'Read "Clean Code"',
+      description: 'Read chapter 4 and 5',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      priority: 'medium',
+      status: 'in-progress',
+      category: 'Education',
+    },
+    {
+      id: 7,
+      title: 'Pay electricity bill',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+      priority: 'high',
+      status: 'pending',
+      category: 'Finance',
+    },
+    {
+      id: 8,
+      title: 'Morning Jogging',
+      description: 'Run 5km in the park',
+      completed: true,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 12 * 60 * 60 * 1000),
+      priority: 'medium',
+      status: 'completed',
+      category: 'Health',
+    },
+    {
+      id: 9,
+      title: 'Fix bug #4022',
+      description: 'Navbar responsiveness issue on mobile',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
+      priority: 'high',
+      status: 'in-progress',
+      category: 'Work',
+    },
+    {
+      id: 10,
+      title: 'Call parents',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+      priority: 'low',
+      status: 'pending',
+      category: 'Personal',
+    },
+    {
+      id: 11,
+      title: 'Update Resume',
+      description: 'Add recent Angular projects',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+      priority: 'medium',
+      status: 'pending',
+      category: 'Career',
+    },
+    {
+      id: 12,
+      title: 'Buy Birthday Gift',
+      description: 'For brother',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000),
+      priority: 'high',
+      status: 'pending',
+      category: 'Shopping',
+    },
+    {
+      id: 13,
+      title: 'Learn RxJS Operators',
+      description: 'Focus on mergeMap, switchMap, concatMap',
+      completed: false,
+      createdAt: new Date(),
+      deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+      priority: 'high',
+      status: 'in-progress',
+      category: 'Education',
+    }
   ]);
 
   private categoriesSubject = new BehaviorSubject<ICategory[]>([
-    { id: 1, name: 'Work', color: '#FF6B6B' },
-    { id: 2, name: 'Shopping', color: '#4ECDC4' },
-    { id: 3, name: 'Health', color: '#45B7D1' },
-    { id: 4, name: 'Personal', color: '#FFA07A' },
+    {id: 1, name: 'Work', color: '#FF6B6B'},
+    {id: 2, name: 'Shopping', color: '#4ECDC4'},
+    {id: 3, name: 'Health', color: '#45B7D1'},
+    {id: 4, name: 'Personal', color: '#FFA07A'},
   ]);
 
   todos$ = this.todosSubject.asObservable();
   categories$ = this.categoriesSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+  }
 
   private generateId(): number {
     const todos = this.todosSubject.value;
@@ -73,7 +182,7 @@ export class TodoService {
 
   toggleTodo(id: number): void {
     const todos = this.todosSubject.value.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todo.id === id ? {...todo, completed: !todo.completed} : todo
     );
     this.todosSubject.next(todos);
   }
@@ -81,7 +190,7 @@ export class TodoService {
   updateTodo(id: number, updateTodo: ITodo): void {
     const currentTodos = this.todosSubject.value;
     const updatedTodos = currentTodos.map((todo) =>
-      todo.id === id ? { ...updateTodo, id } : todo,
+      todo.id === id ? {...updateTodo, id} : todo,
     );
     this.todosSubject.next(updatedTodos);
   }
@@ -126,7 +235,7 @@ export class TodoService {
   getTodosSortedByPriority(): Observable<ITodo[]> {
     return this.todos$.pipe(
       map((todos) => {
-        const priorityOrder = { high: 1, medium: 2, low: 3 };
+        const priorityOrder = {high: 1, medium: 2, low: 3};
         return [...todos].sort(
           (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
         );
@@ -179,7 +288,7 @@ export class TodoService {
   updateCategory(id: number, updateCategory: ICategory): void {
     const categories = this.categoriesSubject.value;
     const updatedCategories = categories.map((category) =>
-      category.id === id ? { ...updateCategory, id } : category,
+      category.id === id ? {...updateCategory, id} : category,
     );
     this.categoriesSubject.next(updatedCategories);
   }

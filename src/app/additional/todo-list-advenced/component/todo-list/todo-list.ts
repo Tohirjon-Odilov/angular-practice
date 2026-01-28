@@ -2,10 +2,14 @@ import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@
 import { TodoService } from '../../todo.service';
 import { ITodo } from '../../todo.models';
 import { Subscription } from 'rxjs';
+import {DatePipe, NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [],
+  imports: [
+    DatePipe,
+    NgClass
+  ],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,3 +34,5 @@ export class TodoList implements OnInit, OnDestroy {
     }
   }
 }
+
+

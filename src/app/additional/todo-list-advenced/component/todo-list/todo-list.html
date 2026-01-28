@@ -1,0 +1,36 @@
+<table class="border border-gray-400 w-full block text-left">
+  <thead>
+  <tr>
+    <th class="">T/R</th>
+    <th>Vazifa</th>
+    <th>Deadline</th>
+    <th>Prioriteti</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    @for (todo of todos; track todo.id; let i = $index) {
+      <tr>
+        <td class="">
+          {{ i + 1 }}
+        </td>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.deadline | date }}</td>
+        <td [ngClass]="{
+        'text-green-400 fond-bold': todo.priority === 'low',
+        'text-yellow-500 font-bold': todo.priority === 'medium',
+        'text-red-600 font-bold': todo.priority === 'high'
+        }">{{ todo.priority }}
+        </td>
+        <td>
+          <button class="bg-blue-400 rounded-2xl text-white px-2">View</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4">No todos found.</td>
+      </tr>
+    }
+  </tbody>
+</table>
