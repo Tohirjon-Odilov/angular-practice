@@ -1,0 +1,61 @@
+<div class="contact-form">
+  <h2>Biz bilan bog'laning</h2>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <!-- Ism -->
+    <div class="form-group">
+      <label>Ism:</label>
+      <input type="text" formControlName="name">
+
+      @if (name?.invalid && name?.touched) {
+        <div class="error">
+          @if (name?.errors?.['required']) {
+            <span>Ism majburiy</span>
+          }
+          @if (name?.errors?.['minlength']) {
+            <span>Kamida 3 ta harf</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" formControlName="email">
+
+      @if (email?.invalid && email?.touched) {
+        <div class="error">
+          @if (email?.errors?.['required']) {
+            <span>Email majburiy</span>
+          }
+          @if (email?.errors?.['email']) {
+            <span>Email noto'g'ri</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Xabar -->
+    <div class="form-group">
+      <label>Xabar:</label>
+      <textarea formControlName="message" rows="5"></textarea>
+
+      @if (message?.invalid && message?.touched) {
+        <div class="error">
+          @if (message?.errors?.['required']) {
+            <span>Xabar majburiy</span>
+          }
+          @if (message?.errors?.['minlength']) {
+            <span>Kamida 10 ta belgi</span>
+          }
+        </div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid">
+      Yuborish
+    </button>
+  </form>
+</div>

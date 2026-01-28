@@ -1,0 +1,33 @@
+<div class="login-form">
+  <h2>Tizimga kirish</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <!-- Username -->
+    <div class="form-group">
+      <label>Username:</label>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Username kiriting">
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label>Parol:</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Parol kiriting">
+    </div>
+
+    <button type="submit">Kirish</button>
+  </form>
+
+  <!-- Real-time ko'rsatish -->
+  <div class="debug">
+    <p>Username: {{ username }}</p>
+    <p>Password: {{ password }}</p>
+  </div>
+</div>
