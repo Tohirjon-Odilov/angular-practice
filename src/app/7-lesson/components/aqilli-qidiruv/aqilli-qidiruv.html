@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="input-wrapper">
+    <input
+      type="text"
+      pInputText
+      placeholder="Search users..."
+      debounceInput
+      (debounceInput)="search($event)"
+      [debounceTime]="1000"
+    />
+  </div>
+
+  <ul>
+    @for (user of users(); track user.id; let i = $index) {
+      <li>{{ user.first_name }} {{ user.last_name }}</li>
+    }
+  </ul>
+</div>

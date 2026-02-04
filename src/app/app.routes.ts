@@ -48,6 +48,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'rxjs',
+    loadChildren: () =>
+      import('./7-lesson/routes').then((c) => c.routes),
+  },
+  {
     path: 'valyuta',
     loadComponent: () => import('./additional/converter/converter').then((m) => m.Converter),
   },
