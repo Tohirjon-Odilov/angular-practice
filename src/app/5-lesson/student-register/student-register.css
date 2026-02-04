@@ -11,7 +11,6 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .register-card {
@@ -187,25 +186,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .register-card {
-    padding: 30px 20px;
-  }
-
-  .register-header h2 {
-    font-size: 24px;
-  }
-
-  .form-input {
-    padding: 11px 12px;
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-
-  .submit-button {
-    padding: 11px 20px;
-    font-size: 15px;
-  }
 }

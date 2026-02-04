@@ -6,107 +6,111 @@
     </div>
 
     <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="register-form">
-      <div class="form-group">
-        <label for="name" class="form-label">
-          <span class="label-text">Ism</span>
-          <span class="required">*</span>
-        </label>
-        <div class="input-wrapper">
-          <input
-            id="name"
-            type="text"
-            formControlName="name"
-            class="form-input"
-            placeholder="Ism kiriting"
-            [class.is-invalid]="name?.invalid && name?.touched"
-          >
-          @if (name?.invalid && name?.touched) {
-            <div class="error-message">
-              @if (name?.errors?.['required']) {
-                <span>Ism majburiy</span>
-              } @else if (name?.errors?.['minlength']) {
-                <span>Kamida 3 ta harf</span>
-              }
-            </div>
-          }
+      <div class="flex">
+        <div class="form-group">
+          <label for="name" class="form-label">
+            <span class="label-text">Ism</span>
+            <span class="required">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="form-input"
+              placeholder="Ism kiriting"
+              [class.is-invalid]="name?.invalid && name?.touched"
+            />
+            @if (name?.invalid && name?.touched) {
+              <div class="error-message">
+                @if (name?.errors?.['required']) {
+                  <span>Ism majburiy</span>
+                } @else if (name?.errors?.['minlength']) {
+                  <span>Kamida 3 ta harf</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="secondName" class="form-label">
+            <span class="label-text">Familiya</span>
+            <span class="required">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              id="secondName"
+              type="text"
+              formControlName="secondName"
+              class="form-input"
+              placeholder="Familiya kiriting"
+              [class.is-invalid]="secondName?.invalid && secondName?.touched"
+            />
+            @if (secondName?.invalid && secondName?.touched) {
+              <div class="error-message">
+                @if (secondName?.errors?.['required']) {
+                  <span>Familiya majburiy</span>
+                } @else if (secondName?.errors?.['minlength']) {
+                  <span>Kamida 3 ta harf</span>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="secondName" class="form-label">
-          <span class="label-text">Familiya</span>
-          <span class="required">*</span>
-        </label>
-        <div class="input-wrapper">
-          <input
-            id="secondName"
-            type="text"
-            formControlName="secondName"
-            class="form-input"
-            placeholder="Familiya kiriting"
-            [class.is-invalid]="secondName?.invalid && secondName?.touched"
-          >
-          @if (secondName?.invalid && secondName?.touched) {
-            <div class="error-message">
-              @if (secondName?.errors?.['required']) {
-                <span>Familiya majburiy</span>
-              } @else if (secondName?.errors?.['minlength']) {
-                <span>Kamida 3 ta harf</span>
-              }
-            </div>
-          }
+      <div class="flex">
+        <div class="form-group">
+          <label for="email" class="form-label">
+            <span class="label-text">Email</span>
+            <span class="required">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-input"
+              placeholder="email@example.com"
+              [class.is-invalid]="email?.invalid && email?.touched"
+            />
+            @if (email?.invalid && email?.touched) {
+              <div class="error-message">
+                @if (email?.errors?.['required']) {
+                  <span>Email majburiy</span>
+                } @else if (email?.errors?.['email']) {
+                  <span>Email noto'g'ri formada</span>
+                }
+              </div>
+            }
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="email" class="form-label">
-          <span class="label-text">Email</span>
-          <span class="required">*</span>
-        </label>
-        <div class="input-wrapper">
-          <input
-            id="email"
-            type="email"
-            formControlName="email"
-            class="form-input"
-            placeholder="email@example.com"
-            [class.is-invalid]="email?.invalid && email?.touched"
-          >
-          @if (email?.invalid && email?.touched) {
-            <div class="error-message">
-              @if (email?.errors?.['required']) {
-                <span>Email majburiy</span>
-              } @else if (email?.errors?.['email']) {
-                <span>Email noto'g'ri formada</span>
-              }
-            </div>
-          }
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password" class="form-label">
-          <span class="label-text">Parol</span>
-          <span class="required">*</span>
-        </label>
-        <div class="input-wrapper">
-          <input
-            id="password"
-            type="password"
-            formControlName="password"
-            class="form-input"
-            placeholder="Kamida 6 ta belgi"
-            [class.is-invalid]="password?.invalid && password?.touched"
-          >
-          @if (password?.invalid && password?.touched) {
-            <div class="error-message">
-              @if (password?.errors?.['required']) {
-                <span>Parol majburiy</span>
-              } @else if (password?.errors?.['minlength']) {
-                <span>Kamida 6 ta belgi</span>
-              }
-            </div>
-          }
+        <div class="form-group">
+          <label for="password" class="form-label">
+            <span class="label-text">Parol</span>
+            <span class="required">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              class="form-input"
+              placeholder="Kamida 6 ta belgi"
+              [class.is-invalid]="password?.invalid && password?.touched"
+            />
+            @if (password?.invalid && password?.touched) {
+              <div class="error-message">
+                @if (password?.errors?.['required']) {
+                  <span>Parol majburiy</span>
+                } @else if (password?.errors?.['minlength']) {
+                  <span>Kamida 6 ta belgi</span>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>
 
@@ -123,7 +127,7 @@
             class="form-input"
             placeholder="Parolni qayta kiriting"
             [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched"
-          >
+          />
           @if (confirmPassword?.invalid && confirmPassword?.touched) {
             <div class="error-message">
               @if (confirmPassword?.errors?.['required']) {
