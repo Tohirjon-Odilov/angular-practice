@@ -13,6 +13,10 @@
   <ul class="border border-gray-500 p-2 mt-5 rounded-xl">
     @for (user of users(); track user.id; let i = $index) {
       <li class="hover:bg-gray-300 rounded hover:text-white p-2 cursor-pointer">{{ user.first_name }} {{ user.last_name }}</li>
+    }@empty {
+      <li>
+        Not found
+      </li>
     }
   </ul>
 </div>
