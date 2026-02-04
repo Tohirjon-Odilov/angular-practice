@@ -24,11 +24,13 @@ export class AqilliQidiruv implements OnInit {
     this.getUsers();
   }
 
-  search(Event: Event) {
-    const input = Event.target as HTMLInputElement;
-    this.getUsers(input.value);
+  search(searchText: string) {
+    if(!searchText.trim()) return;
+    if(searchText.length <= 3) return;
+
+    this.getUsers(searchText);
   }
-  getUsers(searchText: string | null = 'Anastassia') {
+  getUsers(searchText: string | null = '') {
     this.$http
       .get<{ users: User[] }>(`/data/users.json?search=${searchText}`)
       .pipe(delay(500))

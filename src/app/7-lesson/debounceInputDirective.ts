@@ -3,7 +3,7 @@ import { debounceTime, fromEvent } from 'rxjs';
 
 @Directive({
   selector: '[debounceInput]',
-  // standalone: true
+  standalone: true
 })
 export class DebounceInputDirective implements AfterViewInit{
   @Input()
