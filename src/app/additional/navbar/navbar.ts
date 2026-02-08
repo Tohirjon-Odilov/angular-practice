@@ -11,9 +11,9 @@ import { RouterLink } from '@angular/router';
 export class Navbar {
   navbarItems: Lesson[] = [
     {
-      title: "Back to main",
-      description: "Back to main page",
-      path: '/'
+      title: 'Back to main',
+      description: 'Back to main page',
+      path: '/',
     },
     {
       title: 'Valyuta',
@@ -29,6 +29,11 @@ export class Navbar {
       title: 'Math game',
       description: 'Math game',
       path: '/math-game',
+    },
+    {
+      title: 'Legacy code',
+      description: 'Legacy code',
+      path: '/legacy-code',
     },
   ];
 }

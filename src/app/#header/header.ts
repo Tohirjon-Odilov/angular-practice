@@ -35,21 +35,21 @@ export class Header {
       description: 'Crm System',
       path: 'crm-system',
     },
-    {
-      title: '4-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
-    },
-    {
-      title: '5-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
-    },
-    {
-      title: '6-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
-    },
+    // {
+    //   title: '4-lesson',
+    //   description: 'Simple users app',
+    //   path: 'simple-users-app',
+    // },
+    // {
+    //   title: '5-lesson',
+    //   description: 'Simple users app',
+    //   path: 'simple-users-app',
+    // },
+    // {
+    //   title: '6-lesson',
+    //   description: 'Simple users app',
+    //   path: 'simple-users-app',
+    // },
     {
       title: '7-lesson',
       description: 'Debounce Input ...',
@@ -57,13 +57,13 @@ export class Header {
     },
     {
       title: '8-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
+      description: 'Timer',
+      path: 'signal/timer',
     },
     {
       title: "Qo'shimcha",
       description: "Qo'shimcha",
-      path: 'valyuta',
+      path: 'additional/valyuta',
     },
   ];
 }

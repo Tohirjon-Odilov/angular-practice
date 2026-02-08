@@ -3,14 +3,18 @@ import {IStudent, StudentService} from '../../services/student-service';
 import {StudentCard} from '../student-card/student-card';
 import {RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { Button } from "primeng/button";
+import { InputText } from "primeng/inputtext";
 
 @Component({
   selector: 'app-student-list',
   imports: [
     StudentCard,
     RouterLink,
-    FormsModule
-  ],
+    FormsModule,
+    Button,
+    InputText
+],
   templateUrl: './student-list.html',
   styleUrl: './student-list.css',
 })

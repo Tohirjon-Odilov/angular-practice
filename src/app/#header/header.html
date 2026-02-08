@@ -1,8 +1,10 @@
-<ul class="flex justify-center align-center gap-2 flex-wrap">
-  @for (lesson of lessons; track $index) {
-    <li class="bg-blue-900 text-white block p-2 rounded-lg">
-      <a [routerLink]="lesson.path">{{lesson.title}}</a>
-      <p class="text-[10px]">{{ lesson.description }}</p>
-    </li>
-  }
-</ul>
+<nav class="bg-blue-500 w-full z-10 fixed top-0 left-0">
+  <ul class="flex justify-center align-center gap-2 flex-wrap">
+    @for (lesson of lessons; track $index) {
+      <li class="text-white block p-2">
+        <a [routerLink]="lesson.path">{{ lesson.title }}</a>
+        <p class="text-[10px]">{{ lesson.description }}</p>
+      </li>
+    }
+  </ul>
+</nav>

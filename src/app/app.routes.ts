@@ -5,10 +5,6 @@ import { leaveGuard } from './4-lesson/simple-users-app/component/login/leave-gu
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./#header/header').then((c) => c.Header),
-  },
-  {
-    path: 'calculator',
     loadComponent: () =>
       import('./1-lesson/calculator/calculator.component').then((c) => c.CalculatorComponent),
   },
@@ -49,21 +45,15 @@ export const routes: Routes = [
   },
   {
     path: 'rxjs',
-    loadChildren: () =>
-      import('./7-lesson/routes').then((c) => c.routes),
+    loadChildren: () => import('./7-lesson/routes').then((c) => c.routes),
   },
   {
-    path: 'valyuta',
-    loadComponent: () => import('./additional/converter/converter').then((m) => m.Converter),
+    path: 'signal',
+    loadChildren: () => import('./8-lesson/routes').then((c) => c.routes),
   },
   {
-    path: 'todo-list-advanced',
-    loadComponent: () =>
-      import('./additional/todo-list-advenced/todo-list-advenced').then((m) => m.TodoListAdvenced),
-  },
-  {
-    path: 'math-game',
-    loadComponent: () => import('./additional/math-game/math-game').then((m) => m.MathGame),
+    path: "additional",
+    loadChildren: () => import('./additional/routes').then((c) => c.routes)
   },
   {
     path: 'login',
