@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import { Navbar } from "../navbar/navbar";
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 interface Currency {
   uzs: number;
@@ -10,10 +9,7 @@ interface Currency {
 
 @Component({
   selector: 'app-converter',
-  imports: [
-    FormsModule,
-    Navbar
-],
+  imports: [FormsModule],
   templateUrl: './converter.html',
   styleUrl: './converter.css',
 })
@@ -43,7 +39,7 @@ export class Converter {
   }
 
   changeAmount(amount: number): void {
-    this.amount = amount
+    this.amount = amount;
     this.convert();
   }
 

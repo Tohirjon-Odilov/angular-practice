@@ -6,7 +6,7 @@ import { Header } from "./#header/header";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ToastModule, Header],
+  imports: [RouterOutlet, ToastModule],
   providers: [MessageService],
   templateUrl: './app.html',
   styleUrl: './app.css',

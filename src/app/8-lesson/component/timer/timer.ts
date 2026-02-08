@@ -33,6 +33,7 @@ export class Timer {
 
   reset() {
     this.stop();
+    this.timerValue = 0;
     this.timerService.reset();
   }
 }
