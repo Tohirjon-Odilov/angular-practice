@@ -42,8 +42,8 @@ export class Header {
     // },
     {
       title: '5-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
+      description: 'Forms and validation',
+      path: 'forms-validation',
     },
     {
       title: '6-lesson',

@@ -50,6 +50,10 @@ export const routes: Routes = [
         canActivate: [authGuard],
       },
       {
+        path: 'forms-validation',
+        loadChildren: () => import('./5-lesson/routes').then((c) => c.routes),
+      },
+      {
         path: 'rxjs',
         loadChildren: () => import('./7-lesson/routes').then((c) => c.routes),
       },

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InputText } from "primeng/inputtext";
+import { Button } from "primeng/button";
 
 @Component({
   selector: 'app-login-forma',
   templateUrl: './login.html',
-  imports: [FormsModule]
+  imports: [FormsModule, InputText, Button],
+  styleUrl: "./login-forma.css"
 })
 export class LoginForma {
   // Forma ma'lumotlari
