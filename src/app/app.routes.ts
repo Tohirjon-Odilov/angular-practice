@@ -11,6 +11,10 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        loadChildren: () => import('./8-lesson/routes').then((c) => c.routes),
+      },
+      {
+        path: 'calculator',
         loadComponent: () =>
           import('./1-lesson/calculator/calculator.component').then((c) => c.CalculatorComponent),
       },
@@ -54,8 +58,8 @@ export const routes: Routes = [
         loadChildren: () => import('./5-lesson/routes').then((c) => c.routes),
       },
       {
-        path: "backend-integration",
-        loadChildren: () => import('./6-lesson/routes').then((c) => c.routes)
+        path: 'backend-integration',
+        loadChildren: () => import('./6-lesson/routes').then((c) => c.routes),
       },
       {
         path: 'rxjs',
