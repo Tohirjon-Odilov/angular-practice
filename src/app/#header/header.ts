@@ -47,8 +47,8 @@ export class Header {
     },
     {
       title: '6-lesson',
-      description: 'Simple users app',
-      path: 'simple-users-app',
+      description: 'Stackblitsda',
+      path: 'backend-integration',
     },
     {
       title: '7-lesson',

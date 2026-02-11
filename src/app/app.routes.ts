@@ -54,6 +54,10 @@ export const routes: Routes = [
         loadChildren: () => import('./5-lesson/routes').then((c) => c.routes),
       },
       {
+        path: "backend-integration",
+        loadChildren: () => import('./6-lesson/routes').then((c) => c.routes)
+      },
+      {
         path: 'rxjs',
         loadChildren: () => import('./7-lesson/routes').then((c) => c.routes),
       },
