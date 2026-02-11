@@ -9,4 +9,5 @@ export enum State {
   Waiting = 1,
   InProgress = 2,
   Completed = 3,
+  Reset = 4
 }

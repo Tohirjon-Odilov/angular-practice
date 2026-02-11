@@ -22,14 +22,14 @@ import { Button } from 'primeng/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterApp {
-  num = signal<number>(0);
+  num = signal<number>((localStorage.getItem("number") ?? 0) as number);
 
   double = computed(() => this.num() * 2);
   triple = computed(() => this.num() * 3);
 
   constructor() {
     effect(() => {
-      localStorage.setItem('number', this.num.toString());
+      localStorage.setItem('number', this.num().toString());
     });
   }
 

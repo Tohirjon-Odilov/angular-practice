@@ -52,7 +52,7 @@ import { StatePipe } from './todo-list.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoList {
-  private toDoList = signal<TodoModel[]>([
+  toDoList = signal<TodoModel[]>([
     {
       name: 'Tonggi yugurish',
       description: '30 daqiqa kardio va nafas mashqlari',
@@ -103,7 +103,11 @@ export class TodoList {
     },
   ]);
 
-  protected stateOptions = [
+  stateOptions = [
+    {
+      label: 'Default',
+      value: State.Reset,
+    },
     {
       label: 'Waiting',
       value: State.Waiting,
@@ -118,10 +122,15 @@ export class TodoList {
     },
   ];
 
-  protected selectedState = model<State | null>();
+  saved = localStorage.getItem('selected-state') as State | null;
 
+  selectedState = model<State | null>(
+    this.saved && Object.values(State).includes(this.saved) ? this.saved : State.Waiting
+  );
 
   constructor() {
+    console.log(this.selectedState());
+
     effect(() => {
       const state = this.selectedState();
 
@@ -133,10 +142,16 @@ export class TodoList {
     });
   }
 
-  protected filteredToDo = computed(() => {
+  filteredToDo = computed(() => {
     const state = this.selectedState();
     if (!state) return this.toDoList();
 
-    return this.toDoList().filter((x) => x.state == state);
+    return this.toDoList().filter((x) => {
+      if(state == State.Reset){
+        return true
+      }
+
+      return x.state == state
+    });
   });
 }
