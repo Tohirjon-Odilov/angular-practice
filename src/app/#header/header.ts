@@ -35,11 +35,11 @@ export class Header {
       description: 'Crm System',
       path: 'crm-system',
     },
-    // {
-    //   title: '4-lesson',
-    //   description: 'Simple users app',
-    //   path: 'simple-users-app',
-    // },
+    {
+      title: '4-lesson',
+      description: 'Simple users app',
+      path: 'simple-users-app',
+    },
     {
       title: '5-lesson',
       description: 'Forms and validation',
