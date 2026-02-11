@@ -40,16 +40,16 @@ export class Header {
     //   description: 'Simple users app',
     //   path: 'simple-users-app',
     // },
-    // {
-    //   title: '5-lesson',
-    //   description: 'Simple users app',
-    //   path: 'simple-users-app',
-    // },
-    // {
-    //   title: '6-lesson',
-    //   description: 'Simple users app',
-    //   path: 'simple-users-app',
-    // },
+    {
+      title: '5-lesson',
+      description: 'Simple users app',
+      path: 'simple-users-app',
+    },
+    {
+      title: '6-lesson',
+      description: 'Simple users app',
+      path: 'simple-users-app',
+    },
     {
       title: '7-lesson',
       description: 'Debounce Input ...',
@@ -58,7 +58,7 @@ export class Header {
     {
       title: '8-lesson',
       description: 'Timer',
-      path: 'signal/timer',
+      path: 'signal',
     },
     {
       title: "Qo'shimcha",
