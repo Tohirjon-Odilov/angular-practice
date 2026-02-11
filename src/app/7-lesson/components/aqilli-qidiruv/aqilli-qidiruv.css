@@ -1,3 +1,9 @@
 :host {
   display: block;
 }
+
+ul{
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 20px;
+}

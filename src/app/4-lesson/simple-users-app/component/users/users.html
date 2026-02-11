@@ -1,6 +1,8 @@
 <div class="container">
-  <button class="logout ">
-    <a class="bg-red-600 block mb-2 text-white p-2 rounded-md cursor-pointer" (click)="logout()">Chiqish</a>
+  <button class="logout">
+    <a class="bg-red-600 block mb-2 text-white p-2 rounded-md cursor-pointer" (click)="logout()"
+      >Chiqish</a
+    >
   </button>
   <ul class="list-group border border-gray-400 p-3 rounded-md">
     @for (user of users; track user.id; let i = $index) {
@@ -8,8 +10,9 @@
         <li
           [routerLink]="[user.id]"
           class="flex p-2 m-2 gap-2 hover:bg-gray-300 rounded-xl cursor-pointer"
-          [class.bg-green-300]="user.role === 'admin'">
-          <b>{{ i }}.         </b>
+          [class.bg-green-300]="user.role === 'admin'"
+        >
+          <b>{{ i }}. </b>
           <p>
             {{ user.name }}
             @if (user.role === 'admin') {
